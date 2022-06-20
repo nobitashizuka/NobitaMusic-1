@@ -26,7 +26,7 @@ async def pmPermit(client: USER, message: Message):
                         "🥱 ʙᴏᴛ 🥱", url=f"https://t.me/{lel}"
                     ),
                     InlineKeyboardButton(
-                        "💖 sᴜᴩᴩᴏʀᴛ 💖", url="Hey, Fool What R U Searching Repo But Repo Now Private"
+                        "💖 sᴜᴩᴩᴏʀᴛ 💖", url="ʜᴇʏ, ꜰᴏᴏʟ ᴡʜᴀᴛ ʀ ᴜ ꜱᴇᴀʀᴄʜɪɴɢ ʀᴇᴘᴏ🤨 ʙᴜᴛ ʀᴇᴘᴏ ɴᴏᴡ ᴘʀɪᴠᴀᴛᴇ🤪"
                     )
                 ],[ 
                     InlineKeyboardButton(
