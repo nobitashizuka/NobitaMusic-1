@@ -6,44 +6,52 @@ from pyrogram import Client, filters
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
 
 
-@Client.on_message(command("start") & filters.private & ~filters.group & ~filters.edited)
-async def start_(client: Client, message: Message):
-    await message.delete()
-    await message.reply_sticker("CAACAgUAAxkBAAEENxZiNtPdibVkMsjLZrUG9NK4hotHQgAC2wEAAoM12VSdN9ujxVtnUyME")
-    await message.reply_photo(
-        photo=f"{START_IMG}",
-        caption=f"""**━━━━━━━━━━━━━━━━━━
-💔 ʜᴇʏ {message.from_user.mention()} !
+buttons = [
+        [
+            InlineKeyboardButton(
+                text="🥺 ᴀᴅᴅ ᴍᴇ ᴛᴏ ʏᴏᴜʀ ɢʀᴏᴜᴩ 🥺",
+                url=f"https://t.me/{BOT_USERNAME}?startgroup=true",
+            )
+        ],
+        [
+            InlineKeyboardButton(
+                text="ʜᴇʟᴩ",
+                callback_data="settings_back_helper",
+            ),
+            InlineKeyboardButton(
+                text="sᴇᴛᴛɪɴɢs", callback_data="settings_helper"
+            ),
+        ],
+        [
+            InlineKeyboardButton(
+                text="ᴍᴀɪɴᴛᴀɪɴᴇʀ", user_id=OWNER),
+            InlineKeyboardButton(
+                text="sᴜᴩᴩᴏʀᴛ", url=f"{config.SUPPORT_GROUP}"
+            ),
+        ],
+     ]
+    return buttons
 
-        ᴛʜɪs ɪs [{bn}](t.me/{bu}), ᴀ sᴜᴘᴇʀ ғᴀsᴛ ᴠᴄ ᴘʟᴀʏᴇʀ ʙᴏᴛ ғᴏʀ ᴛᴇʟᴇɢʀᴀᴍ ɢʀᴏᴜᴘ ᴠɪᴅᴇᴏᴄʜᴀᴛs...
 
-ᴀʟʟ ᴏꜰ ᴍʏ ᴄᴏᴍᴍᴀɴᴅs ᴄᴀɴ ʙᴇ ᴜsᴇᴅ ᴡɪᴛʜ ᴍʏ ᴄᴏᴍᴍᴀɴᴅ ʜᴀɴᴅʟᴇʀs : ( `/ . • $ ^ ~ + * ?` )
-┏━━━━━━━━━━━━━━┓
-┣★
-┣★ ᴍᴀᴅᴇ ʙʏ: [メ𝗡𝗢𝗕𝗜𝗧𝗔](t.me/{me})
-┣★
-┗━━━━━━━━━━━━━━┛
-
-💞 ɪғ ʏᴏᴜ ʜᴀᴠᴇ ᴀɴʏ ǫᴜᴇsᴛɪᴏɴs ᴀʙᴏᴜᴛ ᴍᴇ ᴛʜᴇɴ ᴅᴍ ᴛᴏ ᴍʏ [ᴏᴡɴᴇʀ](t.me/{me}) ʙᴀʙʏ...
-━━━━━━━━━━━━━━━━━━**""",
-    reply_markup=InlineKeyboardMarkup(
-            [
-                [
-                    InlineKeyboardButton(
-                        "🥺 ᴀᴅᴅ ᴍᴇ ʙᴀʙʏ​ 🥺", url=f"https://t.me/{bu}?startgroup=true"
-                       ),
-                  ],[
-                    InlineKeyboardButton(
-                        "💔 ᴏᴡɴᴇʀ 💔", url=f"https://t.me/{me}"
-                    ),
-                    InlineKeyboardButton(
-                        "🍒 sᴜᴘᴘᴏʀᴛ 🍒", url=f"https://t.me/{SUPPORT_GROUP}"
-                    )
-                ],[
-                    InlineKeyboardButton(
-                        "🔎 ɪɴʟɪɴᴇ 🔎", switch_inline_query_current_chat=""
-                    )]
-            ]
-       ),
-    )
-
+def private_panel(_, BOT_USERNAME, OWNER: Union[bool, int] = None):
+    buttons = [
+        [
+            InlineKeyboardButton(
+                text="🥺 ᴀᴅᴅ ᴍᴇ ᴇʟsᴇ ʏᴏᴜ ɢᴇʏ 🥺",
+                url=f"https://t.me/{BOT_USERNAME}?startgroup=true",
+            ),
+        ],
+        [
+            InlineKeyboardButton(
+                text="ʜᴇʟᴩ", callback_data="settings_back_helper"
+            ),
+        ],
+        [
+            InlineKeyboardButton(text="ᴍᴀɪɴᴛᴀɪɴᴇʀ", user_id=OWNER),
+            InlineKeyboardButton(
+                text="sᴜᴩᴩᴏʀᴛ", url=f"{config.SUPPORT_GROUP}"
+            ),
+        
+        ],
+     ]
+    return buttons
